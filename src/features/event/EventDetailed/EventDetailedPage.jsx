@@ -22,7 +22,6 @@ const mapState = (state, ownProps) => {
 
 const EventDetailedPage = ({event}) => {
   return ( 
-     //<h1>Event Detailed Page</h1>
      <Fragment>
     <Grid>
       <Grid.Column width={10}>
