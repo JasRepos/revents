@@ -14,7 +14,7 @@ import {
   isRequired,
   composeValidators,
 } from "revalidate";
-import DateInput from "../../../app/common/form/DateInput";
+//import DateInput from "../../../app/common/form/DateInput";
 import PlaceInput from "../../../app/common/form/PlaceInput";
 
 const mapState = (state, ownProps) => {
