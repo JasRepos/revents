@@ -1,24 +1,22 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { Menu, Container, Button } from "semantic-ui-react";
 import { NavLink, Link, withRouter } from "react-router-dom";
 import SignedOutMenu from "../Menus/SignedOutMenu";
 import SignedInMenu from "../Menus/SignedInMenu";
 import { openModal } from "../../modals/modalActions";
-import {logout} from '../../auth/authActions'
+import { logout } from "../../auth/authActions";
 
 const actions = {
   openModal,
-  logout
+  logout,
 };
 
 const mapState = (state) => ({
-  auth: state.auth
-})
+  auth: state.auth,
+});
 
 class NavBar extends Component {
-
-
   handleSignIn = () => {
     this.props.openModal("LoginModal");
   };
@@ -28,13 +26,13 @@ class NavBar extends Component {
   };
 
   handleSignOut = () => {
-    this.props.logout()
+    this.props.logout();
     this.props.history.push("/");
   };
 
   render() {
     const { auth } = this.props;
-    const authenticated = auth.authenticated
+    const authenticated = auth.authenticated;
     return (
       <Menu inverted fixed="top">
         <Container>
@@ -43,21 +41,28 @@ class NavBar extends Component {
             Re-vents
           </Menu.Item>
           <Menu.Item as={NavLink} exact to="/events" name="Events" />
-          <Menu.Item as={NavLink} to="/people" name="People" />
-          <Menu.Item as={NavLink} to="/test" name="Test" />
+          {authenticated && (
+            <Fragment>
+              <Menu.Item as={NavLink} to="/people" name="People" />
+              <Menu.Item as={NavLink} to="/test" name="Test" />
 
-          <Menu.Item>
-            <Button
-              as={Link}
-              to="/createEvent"
-              floated="right"
-              positive
-              inverted
-              content="Create Event"
-            />
-          </Menu.Item>
+              <Menu.Item>
+                <Button
+                  as={Link}
+                  to="/createEvent"
+                  floated="right"
+                  positive
+                  inverted
+                  content="Create Event"
+                />
+              </Menu.Item>
+            </Fragment>
+          )}
           {authenticated ? (
-            <SignedInMenu signOut={this.handleSignOut} currentUser={auth.currentUser} />
+            <SignedInMenu
+              signOut={this.handleSignOut}
+              currentUser={auth.currentUser}
+            />
           ) : (
             <SignedOutMenu
               signIn={this.handleSignIn}

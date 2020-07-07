@@ -9,7 +9,7 @@ export const openModal = (modalType, modalProps ) => {
         }
     }
 }
-
+ 
 export const closeModal = () => {
     return{
         type: MODAL_CLOSE
