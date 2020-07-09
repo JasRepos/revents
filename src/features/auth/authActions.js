@@ -77,7 +77,7 @@ export const socialLogin= (selectedProvider) =>
     const firebase = getFirebase();
     const user = firebase.auth().currentUser;
     try {
-      await user.updatePassword(creds.newPassword);
+      await user.updatePassword(creds.newPassword1);
       await dispatch(reset('account'));
       toastr.success('Success', 'your Password has been updated');
     } catch (error) {
