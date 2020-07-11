@@ -43,11 +43,11 @@ class BasicPage extends Component {
             name="dateOfBirth"
             component={TextInput}
             placeholder="Date of Birth"
-            dateFormat="yyyy-MM-dd"
+            dateFormat="d M y"
             showYearDropdown={true}
             showMonthDropdown={true}
             dropdownMode="select"
-            maxDate={moment().subtract(18, "years")}
+            //maxDate={moment().subtract(18, "years")}
           />
           <Field
             name="city"
